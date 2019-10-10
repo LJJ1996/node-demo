@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>  
+    <head> 
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <span id="info"></span>
+        <button id="btn">click me</button>
+        <script type="text/javascript">
+        var info = document.querySelector("#info");
+        document.querySelector("#btn").onclick = function (){
+            var xhr = new XMLHttpRequest();
+            xhr.open('get' , '/test');
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                console.log(xhr.readyState);
+                console.log(xhr.responseText);
+                var arr = xhr.responseText.split("^_^");
+                info.innerHTML = arr[arr.length - 2];
+            }
+        }
+        </script>
+    </body>
+</html>
